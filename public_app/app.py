@@ -1,20 +1,25 @@
-import streamlit as st
+import os
 import pickle
+import streamlit as st
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 
 # -----------------------------
-# Load models
+# Load models safely
 # -----------------------------
-with open("models/tfidf.pkl", "rb") as f:
+with open(os.path.join(MODELS_DIR, "tfidf.pkl"), "rb") as f:
     tfidf = pickle.load(f)
 
-with open("models/logreg_model.pkl", "rb") as f:
-    logreg = pickle.load(f)
+with open(os.path.join(MODELS_DIR, "logreg_model.pkl"), "rb") as f:
+    log_reg = pickle.load(f)
 
-with open("models/rf_model.pkl", "rb") as f:
-    rf = pickle.load(f)
+with open(os.path.join(MODELS_DIR, "rf_model.pkl"), "rb") as f:
+    rf_model = pickle.load(f)
 
-with open("models/xgb_model.pkl", "rb") as f:
-    xgb = pickle.load(f)
+with open(os.path.join(MODELS_DIR, "xgb_model.pkl"), "rb") as f:
+    xgb_model = pickle.load(f)
 
 # -----------------------------
 # Streamlit UI
